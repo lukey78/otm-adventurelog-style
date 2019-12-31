@@ -50,7 +50,7 @@
 	<Rule>
 		&maxscale_zoom9;
 		&minscale_zoom17;
-		<RasterSymbolizer comp-op="grain-merge" opacity="0.9" scaling="bicubic" />
+		<RasterSymbolizer comp-op="grain-merge" opacity="0.85" scaling="bicubic" />
 	</Rule>
 </Style>
 <Layer name="hillshade-30">

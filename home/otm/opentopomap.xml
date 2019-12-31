@@ -30,7 +30,8 @@
                 <!ENTITY cliffs SYSTEM "styles-otm/cliffs.xml">
                 <!ENTITY buildings SYSTEM "styles-otm/buildings.xml">
                 <!ENTITY areas SYSTEM "styles-otm/areas.xml">
-                <!ENTITY contours SYSTEM "styles-otm/contours.xml">
+                <!ENTITY contour-lines SYSTEM "styles-otm/contour-lines.xml">
+                <!ENTITY contour-text SYSTEM "styles-otm/contour-text.xml">
                 <!ENTITY borders-lowzoom SYSTEM "styles-otm/borders-lowzoom.xml">
                 <!ENTITY borders SYSTEM "styles-otm/borders.xml">
                 <!ENTITY barriers SYSTEM "styles-otm/barriers.xml">
@@ -115,7 +116,8 @@
     &cliffs;
     &buildings;
     &areas;
-    &contours;
+    &contour-lines;
+    &contour-text;
     &borders-lowzoom;
     &borders;
     &barriers;
@@ -195,6 +197,14 @@
     </Layer>
 
     &hillshade;
+    <Layer name="contour-lines">
+        <StyleName>contour-lines</StyleName>
+        <Datasource>
+            <Parameter name="table">(SELECT way,ele FROM planet_osm_line) AS contours</Parameter>
+            <Parameter name="dbname">contours</Parameter>
+            &postgis-settings;
+        </Datasource>
+    </Layer>
 
     <Layer name="landuse-over-hillshade">
         <StyleName>landuse-over-hillshade</StyleName>
@@ -333,8 +343,8 @@
         </Datasource>
     </Layer>
 
-    <Layer name="contours">
-        <StyleName>contours</StyleName>
+    <Layer name="contour-text">
+        <StyleName>contour-text</StyleName>
         <Datasource>
             <Parameter name="table">(SELECT way,ele FROM planet_osm_line) AS contours</Parameter>
             <Parameter name="dbname">contours</Parameter>

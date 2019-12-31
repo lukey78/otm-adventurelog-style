@@ -1,0 +1,35 @@
+<Style name="contour-lines">
+	<!-- 100 m -->
+	<Rule>
+		&maxscale_zoom11;
+		&minscale_zoom11;
+		<Filter>([ele] % 100 = 0) and ([ele] != 0)</Filter>
+		<LineSymbolizer stroke="#AAAAAA" stroke-width="0.2" smooth="0.5" />
+	</Rule>
+	<Rule>
+		&maxscale_zoom12;
+		&minscale_zoom12;
+		<Filter>([ele] % 100 = 0) and ([ele] != 0)</Filter>
+		<LineSymbolizer stroke="#999999" stroke-width="0.3" smooth="0.5" />
+	</Rule>
+	<Rule>
+		&maxscale_zoom13;
+		&minscale_zoom13;
+		<Filter>([ele] % 100 = 0) and ([ele] != 0)</Filter>
+		<LineSymbolizer stroke="#AAAAAA" stroke-width="0.4" smooth="0.5" />
+	</Rule>
+	<Rule>
+		&maxscale_zoom14;
+		&minscale_zoom17;
+		<Filter>([ele] % 100 = 0) and ([ele] != 0)</Filter>
+		<LineSymbolizer stroke="#AAAAAA" stroke-width="0.5" smooth="0.5" />
+	</Rule>
+
+	<!-- 20 m -->
+	<Rule>
+		&maxscale_zoom12;
+		&minscale_zoom17;
+		<Filter>([ele] % 100 != 0) and ([ele] % 20 = 0) and ([ele] != 0)</Filter>
+		<LineSymbolizer stroke="#AAAAAA" stroke-width="0.2" smooth="0.5" />
+	</Rule>
+</Style>

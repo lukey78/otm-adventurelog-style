@@ -10,6 +10,7 @@
 	</Rule>
  
 <!-- admin_level = 4 -->
+<!--
 	<Rule>
 		&maxscale_zoom11;
 		&minscale_zoom17;
@@ -18,7 +19,6 @@
 		<LineSymbolizer stroke="#8301b1" stroke-width="0.5" stroke-opacity="0.8" />
 	</Rule>
  
-<!-- admin_level = 5 -->
 	<Rule>
 		&maxscale_zoom11;
 		&minscale_zoom17;
@@ -27,7 +27,6 @@
 		<LineSymbolizer stroke="#c82fe5" stroke-width="0.6" />
 	</Rule>
  
-<!-- admin_level = 6 -->
 	<Rule>
 		&maxscale_zoom11;
 		&minscale_zoom17;
@@ -35,4 +34,5 @@
 		<LineSymbolizer stroke="#cb82d9" stroke-width="3" stroke-opacity="0.1" />
 		<LineSymbolizer stroke="#c82fe5" stroke-width="0.4" />
 	</Rule>
+-->
 </Style>

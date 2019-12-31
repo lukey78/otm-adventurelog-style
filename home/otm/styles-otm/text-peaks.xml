@@ -40,17 +40,25 @@
 	<Rule>
 		&maxscale_zoom12;
 		&minscale_zoom12;
-		<Filter>([natural] = 'peak' or [natural] = 'volcano') and (not ([name] = null)) and ([otm_isolation] &gt; 5000)</Filter>
+		<Filter>([natural] = 'peak' or [natural] = 'volcano') and (not ([name] = null)) and ([otm_isolation] &gt; 1200)</Filter>
 		<TextSymbolizer fontset-name="sans-oblique" size="9" fill="black" margin="1" halo-radius="2" halo-fill="rgba(255,255,255,0.8)" placement="point" dy="3" wrap-width="100">[name]+"\n"+[ele]</TextSymbolizer>
 	</Rule>
-    <Rule>
+
+	<Rule>
 		&maxscale_zoom12;
 		&minscale_zoom12;
-		<Filter>([natural] = 'peak' or [natural] = 'volcano') and (not ([name] = null)) and ([otm_isolation] &gt; 1200)</Filter>
-		<TextSymbolizer fontset-name="sans-oblique" size="9" fill="black" margin="1" halo-radius="2" halo-fill="rgba(255,255,255,0.8)" placement="point" dy="3" wrap-width="100">[name]</TextSymbolizer>
+		<Filter>([natural] = 'peak' or [natural] = 'volcano') and (not ([name] = null)) and ([otm_isolation] &gt; 500)</Filter>
+		<TextSymbolizer fontset-name="sans-oblique" size="9" fill="black" margin="1" halo-radius="2" halo-fill="rgba(255,255,255,0.8)" placement="point" dy="3" wrap-width="100">[ele]</TextSymbolizer>
 	</Rule>
 
-<Rule>
+	<Rule>
+		&maxscale_zoom12;
+		&minscale_zoom12;
+		<Filter>([natural] = 'peak' or [natural] = 'volcano') and (([name] = null)) and ([otm_isolation] &gt; 500)</Filter>
+		<TextSymbolizer fontset-name="sans-oblique" size="9" fill="black" margin="1" halo-radius="2" halo-fill="rgba(255,255,255,0.8)" placement="point" dy="3" wrap-width="100">[ele]</TextSymbolizer>
+	</Rule>
+
+	<Rule>
 		&maxscale_zoom13;
 		&minscale_zoom13;
 		<Filter>([natural] = 'peak' or [natural] = 'volcano') and ([name] = null) and ([otm_isolation] &gt; 300)</Filter>
