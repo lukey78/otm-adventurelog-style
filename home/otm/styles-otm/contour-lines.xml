@@ -30,6 +30,6 @@
 		&maxscale_zoom12;
 		&minscale_zoom17;
 		<Filter>([ele] % 100 != 0) and ([ele] % 20 = 0) and ([ele] != 0)</Filter>
-		<LineSymbolizer stroke="#AAAAAA" stroke-width="0.2" smooth="0.5" />
+		<LineSymbolizer stroke="#AAAAAA" stroke-width="0.2" smooth="0.8" />
 	</Rule>
 </Style>

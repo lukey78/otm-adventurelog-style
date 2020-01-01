@@ -29,7 +29,7 @@
 		<LineSymbolizer stroke="#4d4d4d" stroke-width="0.6" stroke-opacity="0.9" />
 	</Rule>
  
-<!-- admin_level = 4 -->
+<!-- skp admin levels from 4 upwards
 	<Rule>
 		&maxscale_zoom7;
 		&minscale_zoom7;
@@ -43,7 +43,6 @@
 		<LineSymbolizer stroke="#4d4d4d" stroke-width="0.8" />
 	</Rule>
  
-<!-- admin_level = 5 -->
 	<Rule>
 		&maxscale_zoom8;
 		&minscale_zoom8;
@@ -52,9 +51,6 @@
 	</Rule>
 	
 
-
-
-<!-- admin_admin_level = 2 -->
 	<Rule>
 		&maxscale_zoom9;
 		&minscale_zoom10;
@@ -63,7 +59,6 @@
 		<LineSymbolizer stroke="#8301b1" stroke-width="0.8" stroke-opacity="0.9" />
 	</Rule>
  
-<!-- admin_admin_level = 4 -->
 	<Rule>
 		&maxscale_zoom9;
 		&minscale_zoom10;
@@ -72,7 +67,6 @@
 		<LineSymbolizer stroke="#8301b1" stroke-width="0.5" stroke-opacity="0.8" />
 	</Rule>
  
-<!-- admin_admin_level = 5 -->
 	<Rule>
 		&maxscale_zoom9;
 		&minscale_zoom10;
@@ -81,7 +75,6 @@
 		<LineSymbolizer stroke="#c82fe5" stroke-width="0.6" />
 	</Rule>
  
-<!-- admin_admin_level = 6 -->
 	<Rule>
 		&maxscale_zoom10;
 		&minscale_zoom10;
@@ -89,4 +82,5 @@
 		<LineSymbolizer stroke="#cb82d9" stroke-width="3" stroke-opacity="0.1" />
 		<LineSymbolizer stroke="#c82fe5" stroke-width="0.4" />
 	</Rule>
+-->
 </Style>
