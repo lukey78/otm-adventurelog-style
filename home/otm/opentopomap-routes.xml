@@ -27,7 +27,7 @@
     		<LineSymbolizer stroke-width="${route_width:2}" stroke="#d72222" stroke-linejoin="round" stroke-linecap="round" stroke-opacity="0.9" />
   	</Rule>
     </Style>
-    <Layer name="routes" status="off" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+    <Layer name="routes" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
     	<StyleName>routes</StyleName>
     	<Datasource>
        		<Parameter name="type">ogr</Parameter>
