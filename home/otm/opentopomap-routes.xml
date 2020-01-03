@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- TODO:
+	- waterfall
+	- label positions places
+	- railway bridges for others than simple rails
+	- generalize rivers
+-->
+<!DOCTYPE Map
+        [
+                <!ENTITY % entities SYSTEM "inc/entities.xml.inc">
+                %entities;
+                ]>
+
+<!-- background-color:
+	zoom 0...8: #117803
+	zoom 9+: e0e0e0
+-->
+<Map background-color="#00000000"
+     srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs +over" buffer-size="256">
+    <!-- style definitions -->
+    &fontset-settings;
+
+    <!-- layers -->
+
+    <Style name="routes" filter-mode="first">
+  	<Rule>
+    		<LineSymbolizer stroke-width="${route_width:2}" stroke="#d72222" stroke-linejoin="round" stroke-linecap="round" stroke-opacity="0.9" />
+  	</Rule>
+    </Style>
+    <Layer name="routes" status="off" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+    	<StyleName>routes</StyleName>
+    	<Datasource>
+       		<Parameter name="type">ogr</Parameter>
+       		<Parameter name="file">${route_file}</Parameter>
+       		<Parameter name="layer">tracks</Parameter>
+    	</Datasource>
+    </Layer>
+</Map>
+
+        <!--
+        macros:
+            !scale_denominator!
+            !bbox!
+        -->
