@@ -197,15 +197,6 @@
     </Layer>
 
     &hillshade;
-    <Layer name="contour-lines">
-        <StyleName>contour-lines</StyleName>
-        <Datasource>
-            <Parameter name="table">(SELECT way,ele FROM planet_osm_line) AS contours</Parameter>
-            <Parameter name="dbname">contours</Parameter>
-            &postgis-settings;
-        </Datasource>
-    </Layer>
-
     <Layer name="landuse-over-hillshade">
         <StyleName>landuse-over-hillshade</StyleName>
         <Datasource>
@@ -214,6 +205,15 @@
                 landuse
             </Parameter>
             <Parameter name="dbname">gis</Parameter>
+            &postgis-settings;
+        </Datasource>
+    </Layer>
+
+    <Layer name="contour-lines">
+        <StyleName>contour-lines</StyleName>
+        <Datasource>
+            <Parameter name="table">(SELECT way,ele FROM planet_osm_line) AS contours</Parameter>
+            <Parameter name="dbname">contours</Parameter>
             &postgis-settings;
         </Datasource>
     </Layer>
@@ -456,20 +456,6 @@
             <Parameter name="dbname">gis</Parameter>
             &postgis-settings;
         </Datasource>
-    </Layer>
-
-    <Style name="routes" filter-mode="first">
-  	<Rule>
-    		<LineSymbolizer stroke-width="${route_width:2}" stroke="#ff0000" stroke-linejoin="round" stroke-linecap="round" stroke-opacity="0.9" comp-op="multiply" />
-  	</Rule>
-    </Style>
-    <Layer name="routes" status="off" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
-    	<StyleName>routes</StyleName>
-    	<Datasource>
-       		<Parameter name="type">ogr</Parameter>
-       		<Parameter name="file">${route_file}</Parameter>
-       		<Parameter name="layer">tracks</Parameter>
-    	</Datasource>
     </Layer>
 
     <Layer name="railway-points" clear-label-cache="on">
