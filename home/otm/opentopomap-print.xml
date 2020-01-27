@@ -813,6 +813,8 @@
             &postgis-settings;
         </Datasource>
     </Layer>
+
+
     <!--	<Layer name="test">
             <StyleName>test</StyleName>
             <Datasource>
