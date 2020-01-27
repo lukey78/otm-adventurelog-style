@@ -212,7 +212,7 @@
     <Layer name="contour-lines">
         <StyleName>contour-lines</StyleName>
         <Datasource>
-            <Parameter name="table">(SELECT way,ele FROM planet_osm_line) AS contours</Parameter>
+            <Parameter name="table">(SELECT wkb_geometry,height FROM contours) AS contours</Parameter>
             <Parameter name="dbname">contours</Parameter>
             &postgis-settings;
         </Datasource>
@@ -346,7 +346,7 @@
     <Layer name="contour-text">
         <StyleName>contour-text</StyleName>
         <Datasource>
-            <Parameter name="table">(SELECT way,ele FROM planet_osm_line) AS contours</Parameter>
+            <Parameter name="table">(SELECT wkb_geometry,height FROM contours) AS contours</Parameter>
             <Parameter name="dbname">contours</Parameter>
             &postgis-settings;
         </Datasource>
