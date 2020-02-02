@@ -3,77 +3,77 @@
 		&maxscale_zoom7;
 		&minscale_zoom8;
 		<Filter>([natural] = 'peak' or [natural] = 'volcano') and ([otm_isolation] = 100000)</Filter>
-		<TextSymbolizer fontset-name="sans-oblique" allow-overlap="true" size="8" fill="black" margin="1" horizontal-alignment="left" justify-alignment="right" halo-radius="1" halo-fill="rgba(255,255,255,1)" placement="point" dx="-5" wrap-width="50">[name]</TextSymbolizer>
+		<TextSymbolizer fontset-name="sans-oblique" size="9" fill="black" margin="1" horizontal-alignment="left" justify-alignment="right" halo-radius="1" halo-fill="rgba(255,255,255,1)" placement="point" dx="-5" wrap-width="50">[name]</TextSymbolizer>
 	</Rule>
     <Rule>
 		&maxscale_zoom9;
 		&minscale_zoom9;
 		<Filter>([natural] = 'peak' or [natural] = 'volcano') and (not ([name] = null)) and ([otm_isolation] &gt; 50000)</Filter>
-		<TextSymbolizer fontset-name="sans-oblique" allow-overlap="true" size="8" fill="black" margin="1" horizontal-alignment="left" justify-alignment="right" halo-radius="1" halo-fill="rgba(255,255,255,1)" placement="point" dx="-5" wrap-width="50">[name]</TextSymbolizer>
+		<TextSymbolizer fontset-name="sans-oblique" size="9" fill="black" margin="1" horizontal-alignment="left" justify-alignment="right" halo-radius="1" halo-fill="rgba(255,255,255,1)" placement="point" dx="-5" wrap-width="50">[name]</TextSymbolizer>
 	</Rule>
     <Rule>
 		&maxscale_zoom10;
 		&minscale_zoom10;
 		<Filter>([natural] = 'peak' or [natural] = 'volcano') and (not ([name] = null)) and ([otm_isolation] &gt; 30000)</Filter>
-		<TextSymbolizer fontset-name="sans-oblique" allow-overlap="true" size="8" fill="black" margin="1" horizontal-alignment="left" justify-alignment="right" halo-radius="1" halo-fill="rgba(255,255,255,1.0)" placement="point" dx="-5" wrap-width="100">[name]+"\n"+[ele]</TextSymbolizer>
+		<TextSymbolizer fontset-name="sans-oblique" size="9" fill="black" margin="1" horizontal-alignment="left" justify-alignment="right" halo-radius="1" halo-fill="rgba(255,255,255,1.0)" placement="point" dx="-5" wrap-width="100">[name]+"\n"+[ele]</TextSymbolizer>
 	</Rule>
 	<Rule>
 		&maxscale_zoom10;
 		&minscale_zoom10;
 		<Filter>([natural] = 'peak' or [natural] = 'volcano') and (not ([name] = null)) and ([otm_isolation] &gt; 10000)</Filter>
-		<TextSymbolizer fontset-name="sans-oblique" size="8" fill="black" margin="1" horizontal-alignment="left" justify-alignment="right" halo-radius="1" halo-fill="rgba(255,255,255,1)" placement="point" dx="-5" wrap-width="100">[name]</TextSymbolizer>
+		<TextSymbolizer fontset-name="sans-oblique" size="9" fill="black" margin="1" horizontal-alignment="left" justify-alignment="right" halo-radius="1" halo-fill="rgba(255,255,255,1)" placement="point" dx="-5" wrap-width="100">[name]</TextSymbolizer>
 	</Rule>
 
     <Rule>
 		&maxscale_zoom11;
 		&minscale_zoom11;
         <Filter>(([natural] = 'peak' or [natural] = 'volcano') and (not ([name] = null)) and ([otm_isolation] &gt; 10000))</Filter>
-        <TextSymbolizer fontset-name="sans-oblique" size="8" allow-overlap="true" fill="black" margin="1" horizontal-alignment="left" justify-alignment="right" halo-radius="1" halo-fill="rgba(255,255,255,1.0)" placement="point" dx="-5" wrap-width="100">[name]+"\n"+[ele]</TextSymbolizer>
+        <TextSymbolizer fontset-name="sans-oblique" size="9" allow-overlap="true" fill="black" margin="1" horizontal-alignment="left" justify-alignment="right" halo-radius="1" halo-fill="rgba(255,255,255,1.0)" placement="point" dx="-5" wrap-width="100">[name]+"\n"+[ele]</TextSymbolizer>
 	</Rule>
 	<Rule>
 		&maxscale_zoom11;
 		&minscale_zoom11;
         <Filter>(([natural] = 'peak' or [natural] = 'volcano') and (not ([name] = null)) and ([otm_isolation] &gt; 5000) and ([otm_isolation] &lt;= 10000))</Filter>
-        <TextSymbolizer fontset-name="sans-oblique" size="8" allow-overlap="true" fill="black" margin="1" halo-radius="1" halo-fill="rgba(255,255,255,1.0)" placement="point" dx="-5" wrap-width="100">[name]</TextSymbolizer>
+        <TextSymbolizer fontset-name="sans-oblique" size="9" allow-overlap="true" fill="black" margin="1" halo-radius="1" halo-fill="rgba(255,255,255,1.0)" placement="point" dx="-5" wrap-width="100">[name]</TextSymbolizer>
 	</Rule>
 
 	<Rule>
 		&maxscale_zoom12;
 		&minscale_zoom12;
 		<Filter>([natural] = 'peak' or [natural] = 'volcano') and ([otm_isolation] &gt; 200) and ([otm_isolation] &lt; 800)</Filter>
-		<TextSymbolizer fontset-name="sans-oblique" size="6" fill="black" margin="1" horizontal-alignment="left" justify-alignment="right" halo-radius="1" halo-fill="rgba(255,255,255,1)" placement="point" dx="-5" wrap-width="100">[ele]</TextSymbolizer>
+		<TextSymbolizer fontset-name="sans-oblique" size="7" fill="black" margin="1" horizontal-alignment="left" justify-alignment="right" halo-radius="1" halo-fill="rgba(255,255,255,1)" placement="point" dx="-5" wrap-width="100">[ele]</TextSymbolizer>
 	</Rule>
 
 	<Rule>
 		&maxscale_zoom12;
 		&minscale_zoom12;
 		<Filter>([natural] = 'peak' or [natural] = 'volcano') and (not ([name] = null)) and ([otm_isolation] &gt;= 800)</Filter>
-		<TextSymbolizer fontset-name="sans-oblique" size="8" allow-overlap="true" fill="black" horizontal-alignment="left" justify-alignment="right" halo-radius="1" halo-fill="rgba(255,255,255,1.0)" placement="point" dx="-5" wrap-width="100">[name]+"\n"+[ele]</TextSymbolizer>
+		<TextSymbolizer fontset-name="sans-oblique" size="9" allow-overlap="true" fill="black" horizontal-alignment="left" justify-alignment="right" halo-radius="1" halo-fill="rgba(255,255,255,1.0)" placement="point" dx="-5" wrap-width="100">[name]+"\n"+[ele]</TextSymbolizer>
 	</Rule>
 
 	<Rule>
 		&maxscale_zoom13;
 		&minscale_zoom13;
 		<Filter>([natural] = 'peak' or [natural] = 'volcano') and ([name] = null) and ([otm_isolation] &gt; 200)</Filter>
-		<TextSymbolizer fontset-name="sans-oblique" size="6" fill="black" margin="1" horizontal-alignment="left" justify-alignment="right" halo-radius="1" halo-fill="rgba(255,255,255,1)" placement="point" dx="-5" wrap-width="100">[ele]</TextSymbolizer>
+		<TextSymbolizer fontset-name="sans-oblique" size="7" fill="black" margin="1" horizontal-alignment="left" justify-alignment="right" halo-radius="1" halo-fill="rgba(255,255,255,1)" placement="point" dx="-5" wrap-width="100">[ele]</TextSymbolizer>
 	</Rule>
 	<Rule>
 		&maxscale_zoom13;
 		&minscale_zoom13;
 		<Filter>([natural] = 'peak' or [natural] = 'volcano') and (not ([name] = null)) and ([otm_isolation] &gt; 200)</Filter>
-		<TextSymbolizer fontset-name="sans-oblique" allow-overlap="true" size="8" fill="black" margin="1" halo-radius="1" horizontal-alignment="left" justify-alignment="right" halo-fill="rgba(255,255,255,1.0)" placement="point" dx="-5" wrap-width="100">[name]+"\n"+[ele]</TextSymbolizer>
+		<TextSymbolizer fontset-name="sans-oblique" allow-overlap="true" size="9" fill="black" margin="1" halo-radius="1" horizontal-alignment="left" justify-alignment="right" halo-fill="rgba(255,255,255,1.0)" placement="point" dx="-5" wrap-width="100">[name]+"\n"+[ele]</TextSymbolizer>
 	</Rule>
 
 	<Rule>
 		&maxscale_zoom14;
 		&minscale_zoom17;
 		<Filter>([natural] = 'peak' or [natural] = 'volcano') and ([name] = null)</Filter>
-		<TextSymbolizer fontset-name="sans-oblique" size="8" fill="black" margin="1" horizontal-alignment="left" justify-alignment="right" halo-radius="1" halo-fill="rgba(255,255,255,1.0)" placement="point" dx="-5" wrap-width="100">[ele]</TextSymbolizer>
+		<TextSymbolizer fontset-name="sans-oblique" size="9" fill="black" margin="1" horizontal-alignment="left" justify-alignment="right" halo-radius="1" halo-fill="rgba(255,255,255,1.0)" placement="point" dx="-5" wrap-width="100">[ele]</TextSymbolizer>
 	</Rule>
 	<Rule>
 		&maxscale_zoom14;
 		&minscale_zoom17;
 		<Filter>([natural] = 'peak' or [natural] = 'volcano') and not ([name] = null)</Filter>
-		<TextSymbolizer fontset-name="sans-oblique" allow-overlap="true" size="8" fill="black" margin="1" horizontal-alignment="left" justify-alignment="right" halo-radius="1" halo-fill="rgba(255,255,255,1.0)" placement="point" dx="-5" wrap-width="100">[name]+"\n"+[ele]</TextSymbolizer>
+		<TextSymbolizer fontset-name="sans-oblique" allow-overlap="true" size="9" fill="black" margin="1" horizontal-alignment="left" justify-alignment="right" halo-radius="1" halo-fill="rgba(255,255,255,1.0)" placement="point" dx="-5" wrap-width="100">[name]+"\n"+[ele]</TextSymbolizer>
 	</Rule>
 </Style>

@@ -40,8 +40,8 @@
 	<Rule>
 		&maxscale_zoom12;
 		&minscale_zoom12;
-        	<Filter>(([natural] = 'peak' or [natural] = 'volcano') and ([otm_isolation] &gt; 200) and ([otm_isolation] &lt;= 800))</Filter>
-        	<MarkersSymbolizer placement="point" ignore-placement="true" width="5" height="3" file="symbols-otm/peak.png"/>
+		<Filter>(([natural] = 'peak' or [natural] = 'volcano') and ([otm_isolation] &gt; 200) and ([otm_isolation] &lt;= 800))</Filter>
+		<MarkersSymbolizer placement="point" ignore-placement="true" width="5" height="3" file="symbols-otm/peak.png"/>
 	</Rule>
 
     <Rule>
