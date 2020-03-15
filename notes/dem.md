@@ -55,3 +55,4 @@ mv $f* done/
 
 ogr2ogr -append -t_srs EPSG:3857 -f "PostgreSQL" 'PG:dbname='contours'' -lco DIM=2 -nln contours N00E006.tif.shp
 find . -name "*.shp" | parallel --jobs 8 -I% --max-args 1 ./import_in_db.sh %
+
