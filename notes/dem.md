@@ -12,10 +12,33 @@ ERROR 4: `src/N38E068.tif' not recognized as a supported file format.
 
 Alle Tiles durch gdal_fillnodata.py gejagt, weil doch etliche Lücken vorhanden waren.
 
+=> ZU viele Lücken... z.B. im Himalaya-Gebiet (N28E083 z.B.) sind extrem schlecht.
+
+=> NASADEM ist hier besser:
+
+### Download NASADEM
+
+Dateiliste aus index.html erstellen der jeweiligen Unterordner:
+
+`
+curl -s "https://e4ftl01.cr.usgs.gov/provisional/MEaSUREs/NASADEM/Africa/hgt_merge/"  | cut -d'>' -f3 | grep hgt.zip | cut -d'<' -f1 | xargs -I {} echo "https://e4ftl01.cr.usgs.gov/provisional/MEaSUREs/NASADEM/Africa/hgt_merge/{}" >>nasadem-files.txt
+curl -s "https://e4ftl01.cr.usgs.gov/provisional/MEaSUREs/NASADEM/Australia/hgt_merge/"  | cut -d'>' -f3 | grep hgt.zip | cut -d'<' -f1 | xargs -I {} echo "https://e4ftl01.cr.usgs.gov/provisional/MEaSUREs/NASADEM/Australia/hgt_merge/{}" >>nasadem-files.txt
+curl -s "https://e4ftl01.cr.usgs.gov/provisional/MEaSUREs/NASADEM/Eurasia/hgt_merge/"  | cut -d'>' -f3 | grep hgt.zip | cut -d'<' -f1 | xargs -I {} echo "https://e4ftl01.cr.usgs.gov/provisional/MEaSUREs/NASADEM/Eurasia/hgt_merge/{}" >>nasadem-files.txt
+curl -s "https://e4ftl01.cr.usgs.gov/provisional/MEaSUREs/NASADEM/Islands/hgt_merge/"  | cut -d'>' -f3 | grep hgt.zip | cut -d'<' -f1 | xargs -I {} echo "https://e4ftl01.cr.usgs.gov/provisional/MEaSUREs/NASADEM/Islands/hgt_merge/{}" >>nasadem-files.txt
+curl -s "https://e4ftl01.cr.usgs.gov/provisional/MEaSUREs/NASADEM/NorthAmerica/hgt_merge/"  | cut -d'>' -f3 | grep hgt.zip | cut -d'<' -f1 | xargs -I {} echo "https://e4ftl01.cr.usgs.gov/provisional/MEaSUREs/NASADEM/NorthAmerica/hgt_merge/{}" >>nasadem-files.txt
+curl -s "https://e4ftl01.cr.usgs.gov/provisional/MEaSUREs/NASADEM/SouthAmerica/hgt_merge/"  | cut -d'>' -f3 | grep hgt.zip | cut -d'<' -f1 | xargs -I {} echo "https://e4ftl01.cr.usgs.gov/provisional/MEaSUREs/NASADEM/SouthAmerica/hgt_merge/{}" >>nasadem-files.txt
+`
+
+Alle parallelisiert runterladen:
+
+`
+parallel -j 10 wget -nv  --user=lukey78 --password=49\%\#b3O78tktf1B\!XAH  < nasadem-files.txt
+`
 
 ### Stacking worldwide DEM
 
-SRTMv3 1"
+NASADEM 
+SRTMv3 1" (Lücken?)
 Viewfinder 1" (Lücken)
 Viewfinder 3" (Lücken) 
 Sonny (überschreiben) 1"
