@@ -4,7 +4,7 @@
 
     <Style name="slopes">
         <Rule>
-            <RasterSymbolizer/>
+            <RasterSymbolizer comp-op="grain-merge" opacity="0.9" scaling="bicubic" />
         </Rule>
     </Style>
     <Layer name="slopes">
