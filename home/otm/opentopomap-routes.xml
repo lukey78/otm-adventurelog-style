@@ -14,7 +14,7 @@
 
     <Style name="routes" filter-mode="first">
   	<Rule>
-    		<LineSymbolizer stroke-width="${route_width:2}" stroke="#d72222" stroke-linejoin="round" stroke-linecap="round" stroke-opacity="0.9" />
+    		<LineSymbolizer stroke-width="${route_width:2}" stroke="${route_color:#d72222}" stroke-linejoin="round" stroke-linecap="round" stroke-opacity="0.9" />
   	</Rule>
     </Style>
     <Layer name="routes" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
