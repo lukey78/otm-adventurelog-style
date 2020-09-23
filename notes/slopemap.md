@@ -18,9 +18,10 @@ color_slope.txt
 
 
 ```
-gdaldem slope warp-30.tif warp-30-slope.tif -co TILED=YES -co COMPRESS=LZW -co PREDICTOR=2
+gdaldem slope warp-30.tif warp-30-slope.tif -co TILED=YES -co COMPRESS=LZW -co PREDICTOR=2 -co BIGTIFF=YES
 gdaldem color-relief warp-30-slopes.tif color_slope.txt warp-30-slope-map.tif -co COMPRESS=LZW -co PREDICTOR=2 -co BIGTIFF=YES -alpha
-gdaladdo -r cubic --config GDAL_TIFF_OVR_BLOCKSIZE 256 --config BIGTIFF_OVERVIEW YES --config COMPRESS_OVERVIEW DEFLATE warp-30-slope-map.tif 2 4 8 16
+gdaladdo -r cubic --config GDAL_TIFF_OVR_BLOCKSIZE 256 --config BIGTIFF_OVERVIEW YES --config COMPRESS_OVERVIEW JPEG -ro --config GDAL_CACHEMAX 10000 warp-30-slope-map.tif 2
+... iterativ mit .ovr-Files fortsetzen
 ```
 
 europe:

@@ -38,7 +38,6 @@ parallel -j 10 wget -nv  --user=lukey78 --password=49\%\#b3O78tktf1B\!XAH  < nas
 ### Stacking worldwide DEM
 
 NASADEM 
-SRTMv3 1" (Lücken?)
 Viewfinder 1" (Lücken)
 Viewfinder 3" (Lücken) 
 Sonny (überschreiben) 1"

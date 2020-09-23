@@ -17,18 +17,30 @@ for hgtfile in *.hgt; do gdal_fillnodata.py $hgtfile $hgtfile.tif; done
 rm -f *.hgt
 
 gdalbuildvrt -resolution highest raw.vrt src/*.tif # schnellere Grundlage statt raw.tif
-gdal_merge.py -n 32767 -co BIGTIFF=YES -co TILED=YES -co COMPRESS=LZW -co PREDICTOR=2 -ps 0.00028 0.00028 -v -o ../raw.tif *.tif # trotzdem benötigt
+#gdal_merge.py -n -32767 -co BIGTIFF=YES -co TILED=YES -co COMPRESS=LZW -co PREDICTOR=2 -ps 0.00028 0.00028 -v -o ../raw.tif *.tif # trotzdem benötigt
+gdal_merge.py -co BIGTIFF=YES -co TILED=YES -co COMPRESS=LZW -co PREDICTOR=2 -co NUM_THREADS=ALL_CPUS -ps 0.000277777777778 0.000277777777778 -v -o ../raw.tif *.tif
 
 cd ..
 rm -rf unpacked
 
-gdalwarp -co BIGTIFF=YES -co TILED=YES -co COMPRESS=LZW -co PREDICTOR=2 -t_srs "+proj=merc +ellps=sphere +R=6378137 +a=6378137 +units=m" -r bilinear -tr 5000 5000 raw.tif warp-5000.tif
-gdalwarp -co BIGTIFF=YES -co TILED=YES -co COMPRESS=LZW -co PREDICTOR=2 -t_srs "+proj=merc +ellps=sphere +R=6378137 +a=6378137 +units=m" -r bilinear -tr 1000 1000 raw.tif warp-1000.tif
-gdalwarp -co BIGTIFF=YES -co TILED=YES -co COMPRESS=LZW -co PREDICTOR=2 -t_srs "+proj=merc +ellps=sphere +R=6378137 +a=6378137 +units=m" -r bilinear -tr 200 200 raw.tif warp-500.tif
-# 60m - just for contour lines
-gdalwarp -co BIGTIFF=YES -co TILED=YES -co COMPRESS=LZW -co PREDICTOR=2 -t_srs "+proj=merc +ellps=sphere +R=6378137 +a=6378137 +units=m" -r bilinear -tr 60 60 raw.tif warp-60.tif
-# 30m - for the detail hillshade
-gdalwarp -co BIGTIFF=YES -co TILED=YES -co COMPRESS=LZW -co PREDICTOR=2 -t_srs "+proj=merc +ellps=sphere +R=6378137 +a=6378137 +units=m" -r bilinear -tr 30 30 raw.tif warp-30.tif
+
+# 30m - for the detail hillshade - first one gives an Integer overflow error
+# gdalwarp -co BIGTIFF=YES -co TILED=YES -co COMPRESS=LZW -co PREDICTOR=2 -t_srs EPSG:3857 -r bilinear -tap -tr 30 30 raw.tif warp-30.tif
+gdalwarp -tap -tr 30 30 -t_srs EPSG:3857 -of vrt -r bilinear raw.tif raw30.vrt
+#gdalwarp -tap -tr 60 60 -t_srs EPSG:3857 -of vrt -r bilinear raw.tif raw60.vrt
+gdalwarp -tap -tr 200 200 -t_srs EPSG:3857 -of vrt -r bilinear raw.tif raw200.vrt
+gdalwarp -co BIGTIFF=YES -co TILED=YES -co COMPRESS=LZW -co PREDICTOR=2 -t_srs EPSG:3857 -r bilinear -tr 5000 5000 raw.tif warp-5000.tif
+gdalwarp -co BIGTIFF=YES -co TILED=YES -co COMPRESS=LZW -co PREDICTOR=2 -t_srs EPSG:3857 -r bilinear -tr 1000 1000 raw.tif warp-1000.tif
+gdal_translate -co BIGTIFF=YES -co TILED=YES -co COMPRESS=LZW -co PREDICTOR=2 -r bilinear raw30.vrt warp-30.tif
+#gdal_translate -co BIGTIFF=YES -co TILED=YES -co COMPRESS=LZW -co PREDICTOR=2 -r bilinear raw60.vrt warp-60.tif
+gdal_translate -co BIGTIFF=YES -co TILED=YES -co COMPRESS=LZW -co PREDICTOR=2 -r bilinear raw200.vrt warp-500.tif # inkonsistent (500/200), todo
+
+
+#gdalwarp -co BIGTIFF=YES -co TILED=YES -co COMPRESS=LZW -co PREDICTOR=2 -t_srs EPSG:3857 -r bilinear -tr 1000 1000 raw.tif warp-1000.tif
+#gdalwarp -co BIGTIFF=YES -co TILED=YES -co COMPRESS=LZW -co PREDICTOR=2 -t_srs EPSG:3857 -r bilinear -tr 200 200 raw.tif warp-500.tif
+#gdalwarp -co BIGTIFF=YES -co TILED=YES -co COMPRESS=LZW -co PREDICTOR=2 -t_srs EPSG:3857 -r bilinear -tr 60 60 raw.tif warp-60.tif
+#gdalwarp -co BIGTIFF=YES -co TILED=YES -co COMPRESS=LZW -co PREDICTOR=2 -t_srs EPSG:3857 -r bilinear -tr 30 30 raw.tif warp-30.tif
+
 
 # relief for zoom factors 1-4
 gdaldem color-relief -co COMPRESS=LZW -co PREDICTOR=2 -alpha warp-5000.tif /home/otm/relief_color_text_file.txt relief-5000.tif
