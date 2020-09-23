@@ -20,7 +20,7 @@ gis=# select osm_id,name,ele,ST_X(ST_Transform(way, 4326)) as long,ST_Y(ST_Trans
 
   
 
-Eigene "location"-Tabelle bauen:
+# Eigene "location"-Tabelle bauen:
 
 
 CREATE TABLE location ("osm_id" BIGINT PRIMARY KEY, "name" TEXT, "ele" TEXT, "lat" FLOAT, "lon" FLOAT, "way" geometry(Point,3857), country_code VARCHAR(3), "place" TEXT, "natural" TEXT, "tourism" TEXT);
@@ -32,7 +32,7 @@ CREATE INDEX location_name_idx ON location (lower(name));
 
 
 
-Queries (bspw.):
+# Queries (bspw.):
 
 
 Name query:
@@ -40,19 +40,19 @@ Name query:
 select * from location where lower(name) like '%jens%';
 
  
-Bounding Box Query:
+# Bounding Box Query:
 
 select * from location where ST_Contains(ST_Transform(ST_MakeEnvelope(7.651, 47.56, 7.702, 47.5361, 4326), 3857), way);
 
 
 
-HTTP-API für Postgres:
+# HTTP-API für Postgres:
 
 https://postgrest.org/en/stable/api.html
 
 
 
-ZUGRIFFE:
+# ZUGRIFFE:
 
 gis=# create user location with password 'locationpass';
 CREATE ROLE
@@ -72,17 +72,16 @@ host    all             all              ::/0                            md5
 
 listen_addresses = '*'
 
-RESTART!!
 
 
 
-Test Login von aussen:
+# Test Login von aussen:
 
 docker run -it --rm --network internal-services-network jbergknoff/postgresql-client postgresql://location:locationpass@mapserver:5432/gis
 
 
 
-POSTGREST:
+# POSTGREST
 
 curl http://localhost:3000/location?name=ilike.*Aletsch*
 
