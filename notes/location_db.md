@@ -32,6 +32,58 @@ CREATE INDEX location_name_idx ON location (lower(name));
 
 
 
+# Countrycode ergänzen
+
+Geht leider nur, wenn man eine "hstore"-DB aufgebaut hat.
+
+UPDATE location 
+SET country_code = tags->'ISO3166-1' 
+FROM planet_osm_polygon 
+WHERE st_contains(planet_osm_polygon.way, location.way)
+AND admin_level='2' 
+AND boundary='administrative';
+
+Siehe hier:
+
+https://help.openstreetmap.org/questions/76729/overpass-api-efficient-location-name-query
+
+
+# Functions definieren
+
+CREATE OR REPLACE FUNCTION search_location(locname text) RETURNS SETOF location AS $$
+    select * from location where lower(name) like locname ORDER BY name asc;
+$$ LANGUAGE SQL IMMUTABLE;
+
+CREATE OR REPLACE FUNCTION search_location(locname text, minLong float, minLat float, maxLong float, maxLat float) RETURNS SETOF location AS $$
+    select * from location where lower(name) like locname AND ST_Contains(ST_Transform(ST_MakeEnvelope(minLong, minLat, maxLong, maxLat, 4326), 3857), way) ORDER BY name ASC;
+$$ LANGUAGE SQL IMMUTABLE;
+
+
+
+# ZUGRIFFE:
+
+gis=# create user location with password 'locationpass';
+CREATE ROLE
+gis=# grant connect on database gis to location;
+GRANT
+gis=# grant all privileges on table location to location;
+GRANT
+
+User "location" Password "locationpass"
+
+
+Änderung in pg_hba.conf:
+
+host    all             all              0.0.0.0/0                       md5
+host    all             all              ::/0                            md5
+
+
+Änderung in postgresql.conf:
+
+listen_addresses = '*'
+
+
+
 # Queries (bspw.):
 
 
@@ -52,29 +104,6 @@ https://postgrest.org/en/stable/api.html
 
 
 
-# ZUGRIFFE:
-
-gis=# create user location with password 'locationpass';
-CREATE ROLE
-gis=# grant connect on database gis to location;
-GRANT
-gis=# grant all privileges on table location to location;
-GRANT
-
-
-Änderung in pg_hba.conf:
-
-host    all             all              0.0.0.0/0                       md5
-host    all             all              ::/0                            md5
-
-
-Änderung in postgresql.conf:
-
-listen_addresses = '*'
-
-
-
-
 # Test Login von aussen:
 
 docker run -it --rm --network internal-services-network jbergknoff/postgresql-client postgresql://location:locationpass@mapserver:5432/gis
@@ -84,5 +113,7 @@ docker run -it --rm --network internal-services-network jbergknoff/postgresql-cl
 # POSTGREST
 
 curl http://localhost:3000/location?name=ilike.*Aletsch*
+
+https://locations.adventurelog.io/rpc/search_location?locname=%bietschhorn%
 
 GEIL!
